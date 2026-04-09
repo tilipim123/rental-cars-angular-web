@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuItem } from 'primeng/api';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { TOOGLE_SIDEBAR } from '../../layout/layout.animation';
 import { FormFieldComponent } from '../../../shared/components/form-field/form-field.component';
@@ -19,6 +20,7 @@ import { FormFieldComponent } from '../../../shared/components/form-field/form-f
     ButtonModule,
     PanelMenuModule,
     CommonModule,
+    RouterLink,
     InputTextModule,
   ],
   animations: [TOOGLE_SIDEBAR],

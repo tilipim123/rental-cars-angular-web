@@ -5,7 +5,17 @@ export const routes: Routes = [
     {
         path: '', component: LayoutComponent, children: [
             {
-                path: '', loadComponent: () => import('./feature/home/home.component').then(component => component.HomeComponent)
+                path: '',
+                redirectTo: 'alugueis',
+                pathMatch: 'full'
+            },
+            {
+                path: 'alugueis',
+                loadComponent: () => import('./feature/alugueis/alugueis.component').then(c => c.AlugueisComponent)
+            },
+            {
+                path: 'relatorios',
+                loadComponent: () => import('./feature/relatorios/relatorios.component').then(c => c.RelatoriosComponent)
             }
         ]
     }

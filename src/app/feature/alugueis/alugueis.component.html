@@ -1,0 +1,53 @@
+<app-title-content title="Alugueis"></app-title-content>
+<p class="subtitle">Preencha o filtro para realizar uma pesquisa.</p>
+
+<div class="upload-section">
+  <h3>Upload de arquivos</h3>
+
+  <div class="upload-container">
+    <div
+      class="dropzone"
+      [class.dragging]="isDragging"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+    >
+      @if (!selectedFile) {
+        <div class="dropzone-content">
+          <div class="upload-icon">
+            <i class="pi pi-cloud-upload"></i>
+          </div>
+          <div class="upload-text">
+            <p class="upload-label">Selecione ou arraste um arquivo <span class="required">*</span></p>
+            <p class="upload-hint">Tipo: RTN</p>
+            <p class="upload-hint">O tamanho do arquivo não pode ser maior que 10MB.</p>
+          </div>
+          <div class="select-btn">
+            <button pButton label="Selecionar" class="p-button-outlined" (click)="fileInput.click()"></button>
+            <input #fileInput type="file" accept=".rtn" (change)="onFileSelected($event)" hidden />
+          </div>
+        </div>
+      } @else {
+        <div class="file-info">
+          <div class="file-icon">
+            <i class="pi pi-image"></i>
+          </div>
+          <div class="file-details">
+            <span class="file-name">{{ selectedFile.name }}</span>
+            @if (isUploading) {
+              <p-progressBar [value]="uploadProgress" [showValue]="false" [style]="{ height: '6px' }"></p-progressBar>
+            }
+          </div>
+          <span class="file-size">{{ formatFileSize(selectedFile.size) }}</span>
+          @if (uploadSuccess) {
+            <button pButton icon="pi pi-trash" class="p-button-danger p-button-text" (click)="removeFile()"></button>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="process-btn">
+      <button pButton label="Processar arquivo" (click)="processarArquivo()" [disabled]="!selectedFile || isUploading"></button>
+    </div>
+  </div>
+</div>

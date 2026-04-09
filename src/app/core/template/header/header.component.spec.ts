@@ -8,10 +8,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent]
-    })
-    .compileComponents();
-    
+      imports: [HeaderComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +18,23 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have default username', () => {
+    expect(component.username).toBe('Usuário');
+  });
+
+  it('should generate initials on init', () => {
+    expect(component.initialsName).toBe('U');
+  });
+
+  it('should extract initials from full name', () => {
+    component.getInitials('Lucas Almada');
+    expect(component.initialsName).toBe('LA');
+  });
+
+  it('should handle single name', () => {
+    component.getInitials('Lucas');
+    expect(component.initialsName).toBe('L');
   });
 });

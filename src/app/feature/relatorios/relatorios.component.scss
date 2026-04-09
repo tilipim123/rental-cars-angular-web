@@ -1,0 +1,58 @@
+.subtitle {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+  }
+}
+
+.filter-actions {
+  padding-bottom: 0.1rem;
+}
+
+:host ::ng-deep {
+  .p-datatable .p-datatable-thead > tr > th {
+    font-weight: 700;
+    color: #334155;
+    font-size: 0.85rem;
+  }
+
+  .p-datatable .p-datatable-tbody > tr > td {
+    font-size: 0.9rem;
+    color: #475569;
+  }
+
+  .p-datatable .p-sortable-column:not(.p-highlight):hover {
+    background: #f8fafc;
+  }
+
+  .p-calendar,
+  .p-dropdown {
+    width: 220px;
+  }
+}
+
+.debitos-footer {
+  text-align: right;
+  background: #eef2ff !important;
+  font-size: 0.95rem;
+  color: #1e293b;
+}

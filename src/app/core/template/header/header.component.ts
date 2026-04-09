@@ -1,44 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TabMenuModule } from 'primeng/tabmenu';
+import { Component, OnInit } from '@angular/core';
 import { AvatarModule } from 'primeng/avatar';
-import { ButtonModule } from 'primeng/button';
-import { BreadcrumbModule } from 'primeng/breadcrumb';
-import { MenuItem } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    TabMenuModule,
     AvatarModule,
-    ButtonModule,
-    BreadcrumbModule,
     CommonModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  @Input() items!: MenuItem[];
-
-  username!: string | undefined;
-
+  username = 'Usuário';
   initialsName!: string;
 
-  constructor() {}
-
   ngOnInit(): void {
-    this.getUserPrincipal();
-  }
-
-  async getUserPrincipal() {
-    // if (await this.keyCloakService.isLoggedIn()) {
-    //   const userPrincipal = this.keyCloakService.loadUserProfile();
-    //   this.username =
-    //     (await userPrincipal).firstName + ' ' + (await userPrincipal).lastName;
-    //   this.getInitials(this.username);
-    // }
+    this.getInitials(this.username);
   }
 
   // Função para extrair iniciais

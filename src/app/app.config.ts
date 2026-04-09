@@ -1,38 +1,20 @@
-import { APP_INITIALIZER, ApplicationConfig } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { routes } from './app.routes';
-// import { KeycloakService } from 'keycloak-angular';
-// import { AuthGuard } from './core/auth/auth.guard';
-import { environment } from '../environments/environment';
 
+registerLocaleData(localePt, 'pt-BR');
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
-    // AuthGuard,
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initializeKeycloak,
-    //   multi: true,
-    //   deps: [KeycloakService],
-    // },
-    // KeycloakService,
+    provideHttpClient(),
+    MessageService,
+    ConfirmationService,
   ],
 };
-
-// function initializeKeycloak(keycloak: KeycloakService) {
-//   return () =>
-//     keycloak.init({
-//       config: {
-//         url: environment.keycloakConfig.url,
-//         realm: environment.keycloakConfig.realm,
-//         clientId: environment.keycloakConfig.clientId,
-//       },
-//       initOptions: {
-//         onLoad: 'check-sso',
-//         checkLoginIframe: false,
-//       },
-//     });
-// }

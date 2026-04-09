@@ -1,10 +1,10 @@
 @if (isOpenMenu) {
 <div class="flex justify-content-end align-items-center pr-1 pt-2">
-  <p-button icon="pi pi-times" (click)="exibirMenu()" [text]="true"></p-button>
+  <p-button icon="pi pi-times" (click)="exibirMenu()" [text]="true" ariaLabel="Fechar menu"></p-button>
 </div>
 } @else {
 <div class="flex justify-content-end align-items-center pr-1 pt-2">
-  <p-button icon="pi pi-bars" (click)="exibirMenu()" [text]="true"></p-button>
+  <p-button icon="pi pi-bars" (click)="exibirMenu()" [text]="true" ariaLabel="Abrir menu"></p-button>
 </div>
 }
 
@@ -12,7 +12,6 @@
   <ng-template pTemplate="item" let-item>
     <a
       *ngIf="!item?.url"
-      [attr.tabindex]="-1"
       class="p-menuitem-link align-items-center"
       [routerLink]="item.routerLink"
       [@toogleMenuItems]="isOpenLabels"
